@@ -6,7 +6,7 @@
 /*   By: mberganz <mberganz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:01:13 by mberganz          #+#    #+#             */
-/*   Updated: 2023/03/30 14:17:08 by mberganz         ###   ########.fr       */
+/*   Updated: 2023/03/31 17:06:34 by mberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1947
+#endif
 
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t num, size_t size);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
