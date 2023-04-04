@@ -1,5 +1,4 @@
-Vamos a chequear errores
+Comprobando errores...
 Otra linea mas
 
-Tras una linea vacia
 Ultima linea

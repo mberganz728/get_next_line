@@ -6,29 +6,81 @@
 /*   By: mberganz <mberganz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:13:15 by mberganz          #+#    #+#             */
-/*   Updated: 2023/03/31 17:06:05 by mberganz         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:10:08 by mberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_calloc(size_t num, size_t size)
+size_t	ft_strlen(const char *str)
 {
-	char	*ptr;
 	size_t	i;
 
 	i = 0;
-	if (size == SIZE_MAX || num == SIZE_MAX)
-		return (0);
-	ptr = (char *)malloc(num * size);
-	if (!ptr)
-		return (0);
-	while (i < (num * size))
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		ptr[i] = 0;
+		if (s[i] == (char)c)
+			return ((char *)s + i);
 		i++;
 	}
-	return (ptr);
+	if (s[i] == 0 && (char)c == 0)
+		return ((char *)s + i);
+	return (0);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*dup;
+
+	i = 0;
+	dup = (char *)malloc((ft_strlen(s1) + 1) * (sizeof(char)));
+	if (!dup)
+		return (0);
+	while (s1[i] != '\0')
+	{
+		dup[i] = s1[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	if ((int)start == -1 || ft_strlen(s) < start)
+		len = 0;
+	else if ((int)start != -1 && ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	if ((int)len != -1)
+		sub = (char *)malloc((len + 1) * sizeof(char));
+	else
+		sub = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!sub)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start] != '\0')
+	{
+		sub[i] = s[start + i];
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
