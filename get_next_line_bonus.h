@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberganz <mberganz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 11:01:13 by mberganz          #+#    #+#             */
-/*   Updated: 2023/04/13 11:28:05 by mberganz         ###   ########.fr       */
+/*   Created: 2023/04/11 14:25:27 by mberganz          #+#    #+#             */
+/*   Updated: 2023/04/13 11:37:51 by mberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>

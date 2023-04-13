@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberganz <mberganz@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 10:56:14 by mberganz          #+#    #+#             */
-/*   Updated: 2023/04/13 11:33:25 by mberganz         ###   ########.fr       */
+/*   Created: 2023/04/11 17:38:53 by mberganz          #+#    #+#             */
+/*   Updated: 2023/04/13 11:39:53 by mberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*nolinebreak(char *whole_line)
 {
@@ -39,7 +39,7 @@ char	*ft_line_and_rest(char **line)
 		rest = ft_strdup(*line + (i + 1));
 		free(*line);
 		*line = rest;
-		return (whole_line);
+		return (nolinebreak(whole_line));
 	}
 	whole_line = ft_strdup(*line);
 	free(*line);
@@ -70,7 +70,7 @@ char	*rnsend(int read_bytes, int fd, char *buffer, char **line)
 char	*get_next_line(int fd)
 {
 	char		*buffer;
-	static char	*line = NULL;
+	static char	*line[1024];
 	int			read_bytes;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -82,17 +82,18 @@ char	*get_next_line(int fd)
 	if (read_bytes < 0)
 	{
 		free(buffer);
-		free(line);
-		line = NULL;
+		free(line[fd]);
+		line[fd] = NULL;
 		return (NULL);
 	}
-	return (rnsend(read_bytes, fd, buffer, &line));
+	return (rnsend(read_bytes, fd, buffer, &line[fd]));
 }
 /*
 #include <stdio.h>
 int	main()
 {
 	char	*line = NULL;
+	//char	*line2 = NULL;
 	int		fd1, fd2, fd3;
 
 	fd1 = open("text1.txt", O_RDONLY);
@@ -110,7 +111,7 @@ int	main()
 	}
 	close(fd1);
 	while ((line = get_next_line(fd2)))
-	{
+	{	
 		printf("%s", line);
 		free(line);
 	}
