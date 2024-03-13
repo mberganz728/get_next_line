@@ -5,4 +5,4 @@
 </h1>
 
 # About this project
-This project is about programming a function that allows you to read content line by line. This is done by returning a line read from a file descriptor.
+This projects is about creating a function that allows to read a line ending with a newline character ('\n') from a file descriptor. This function should work whit any buffersize.
